@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  def homepage 
+  def index
     @user = current_user
   end
 
   private 
 
   def require_login
-    return head(:forbidden) unless current_user
+    redirect_to controller: "sessions", action: "new" unless current_user
   end
 
 end
